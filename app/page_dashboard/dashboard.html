@@ -1,0 +1,35 @@
+<h1 class="title">Dashboard</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>surname</th>
+      <th>date of birth</th>
+      <th>mobile number</th>
+      <th>address (city +stree + house number)</th>
+      <th><a ng-click="editRows()" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Edit selected</a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="v in rows" >
+      <td><input type="checkbox" ng-model="v.checked" ng-checked="users.selected.indexOf(v.id) != -1" ng-value="v.id" ng-change="change(v.checked, v.id)" /></td>
+      <td>{{v.id}}</td>
+      <td>{{v.name}}</td>
+      <td>{{v.surname}}</td>
+      <td>{{v.dateofbirth}}</td>
+      <td>{{v.mobile}}</td>
+      <td>{{v.city}}, {{v.street}}, {{v.housenumber}}</td>
+      <td style="max-width:90px;">
+        <div class="btn-group">
+          <a ui-sref="user.edit({id:v.id})" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</a>
+          <a ng-click="removeRow(v.id, v)" class="btn btn-danger btn-xs"><i class="fa fa-delete"></i> Delete</a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br/>
